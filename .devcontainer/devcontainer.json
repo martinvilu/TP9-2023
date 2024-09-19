@@ -1,0 +1,32 @@
+{
+    "name": "C Development Environment",
+    "image": "mcr.microsoft.com/devcontainers/cpp:bullseye",
+    "postCreateCommand": "sudo apt-get update && sudo apt-get install -y gdb make",
+    "runArgs": [
+      "--cap-add=SYS_PTRACE",
+      "--security-opt",
+      "seccomp=unconfined"
+    ],
+    "customizations": {
+      "vscode": {
+        "settings": {
+          "files.associations": {
+            "*.c": "c",
+            "*.h": "c"
+          },
+          "terminal.integrated.defaultProfile.linux": "bash"
+        },
+        "extensions": [
+          "ms-ceintl.vscode-language-pack-es",  // Traduccion al español
+          "ms-vscode.cpptools",          // C/C++ extension for IntelliSense and debugging
+          "ms-vscode.makefile-tools",       // CMake tools if you're using CMake
+          "ms-vscode.cpptools-extension-pack" // C++ tools pack for richer experience
+        ]
+      }
+    },
+    "remoteUser": "vscode",
+    "mounts": [
+      "source=/dev/bus/usb,target=/dev/bus/usb,type=bind,consistency=cached"
+    ]
+  }
+  
